@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="uz" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <meta name="description" content="IDEAL AQUA - qishloq xo'jaligi va landshaft uchun AI asosidagi aqlli sug'orish tizimlari">
+    <title>IDEAL AQUA | AI-Powered Smart Irrigation Systems</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <div class="loader-text">IDEAL AQUA yuklanmoqda...</div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-wrapper">
+                <div class="logo">
+                    <img src="5.png" alt="IDEAL AQUA" class="logo-img">
+                    
+                </div>
+                
+            </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="navMenu">
+                <ul>
+                    <li><a href="#home" class="nav-link">Bosh sahifa</a></li>
+                    <li><a href="#about" class="nav-link">Biz haqimizda</a></li>
+                    <li><a href="#gallery" class="nav-link">Mahsulotlar</a></li>
+                    <li><a href="#calculator" class="nav-link">Kalkulyator</a></li>
+                    <li><a href="#prices" class="nav-link">Xizmatlar</a></li>
+                    <li><a href="#faq" class="nav-link">Savollar</a></li>
+                    <li><a href="#contact" class="nav-link">Aloqa</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <a href="#contact" class="btn-primary btn-sm">Buyurtma</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-video">
+            <video autoplay muted loop playsinline id="heroVideo">
+                <source src="1.MP4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <div class="container hero-container" data-aos="fade-up">
+            <h1><span class="gradient-text">Kelajak Sug'orish Tizimlari</span></h1>
+            <p>IDEAL AQUA — Sun'iy intellekt, IoT va blokcheyn texnologiyalari asosidagi aqlli sug'orish tizimlari</p>
+            
+            <div class="hero-btns">
+                <a href="#contact" class="btn-primary">
+                    <i class="fas fa-calendar-check"></i> Bepul Konsultatsiya
+                </a>
+                <a href="#gallery" class="btn-secondary">
+                    <i class="fas fa-images"></i> Katalog ko'rish
+                </a>
+                <button class="btn-secondary" id="voiceSearchBtn">
+                    <i class="fas fa-microphone"></i> Ovozli qidiruv
+                </button>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Loyihalar</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">98%</span>
+                    <span class="stat-label">Mijozlar mamnuniyati</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Texnik yordam</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Weather Widget -->
+        <div class="weather-widget" id="weatherWidget">
+            <div class="weather-city-selector">
+                <select id="citySelect" class="city-select">
+                    <option value="41.2995,69.2401">🌍 Toshkent</option>
+                    <option value="39.6542,66.9597">🌍 Samarqand</option>
+                    <option value="39.7747,64.4286">🌍 Buxoro</option>
+                    <option value="41.3783,60.3640">🌍 Xiva</option>
+                    <option value="40.3842,71.7843">🌍 Farg'ona</option>
+                    <option value="40.7821,72.3442">🌍 Andijon</option>
+                    <option value="40.9983,71.6726">🌍 Namangan</option>
+                    <option value="38.8606,65.7891">🌍 Qarshi</option>
+                    <option value="37.2242,67.2784">🌍 Termiz</option>
+                    <option value="42.4533,59.6103">🌍 Nukus</option>
+                </select>
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <i class="fas fa-cloud-sun" id="weatherIcon"></i>
+            <div class="weather-info">
+                <span class="temp" id="weatherTemp">--°C</span>
+                <span class="condition" id="weatherCondition">Yuklanmoqda...</span>
+            </div>
+            <div class="irrigation-recommendation" id="irrigationRecommendation">
+                <i class="fas fa-tint"></i>
+                <span>Sug'orish tavsiyasi: --</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle"><i class="fas fa-info-circle"></i> Biz haqimizda</span>
+                <h2 class="section-title">Nima uchun <span class="gradient-text">IDEAL AQUA?</span></h2>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-content" data-aos="fade-right">
+                    <h3>Innovatsion sug'orish yechimlari yetakchisi</h3>
+                    <p>IDEAL AQUA — 2015-yildan buyon O'zbekiston bozorida AI, IoT va blokcheyn texnologiyalarini qo'llagan holda sifatli va tejamkor sug'orish tizimlarini taqdim etib kelmoqda.</p>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-robot"></i>
+                            <div>
+                                <h4>AI-Powered Analytics</h4>
+                                <p>Sun'iy intellekt asosida sug'orishni optimallashtirish</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-microchip"></i>
+                            <div>
+                                <h4>IoT Integration</h4>
+                                <p>Real-vaqt sensor monitoringi va boshqaruvi</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-link"></i>
+                            <div>
+                                <h4>Blockchain Security</h4>
+                                <p>Shaffof va xavfsiz tranzaksiyalar</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-stats" data-aos="fade-left">
+                    <div class="stat-card">
+                        <div class="stat-circle" data-count="8">0</div>
+                        <p>Yillik tajriba</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-circle" data-count="1240">0</div>
+                        <p>Mamnun mijozlar</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-circle" data-count="150">0</div>
+                        <p>Hududlar</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="gallery" class="section bg-light" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle"><i class="fas fa-boxes"></i> Mahsulotlar</span>
+                <h2 class="section-title">Bizning <span class="gradient-text">Xizmatlar</span></h2>
+            </div>
+            
+            <div class="card-grid">
+                <div class="card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-img">
+                        <img src="2.jpg" alt="Tomchilatib sug'orish" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="ar-view-btn" data-product="drip">
+                                <i class="fas fa-vr-cardboard"></i> AR da ko'rish
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <i class="fas fa-tint card-icon"></i>
+                        <h3>Tomchilatib Sug'orish</h3>
+                        <p>AI asosidagi aqlli tomchilatib sug'orish tizimi. Suv sarfini 70% gacha kamaytiradi.</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            <span>(124 ta sharh)</span>
+                        </div>
+                        <a href="#contact" class="card-link">Batafsil <i class="fas fa-arrow-right"></i></a>
+                        <button class="compare-btn" data-product="drip">Solishtirish <i class="fas fa-chart-line"></i></button>
+                    </div>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-img">
+                        <img src="3.jpg" alt="Aqlli datchiklar" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="ar-view-btn" data-product="sensor">
+                                <i class="fas fa-vr-cardboard"></i> AR da ko'rish
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <i class="fas fa-microchip card-icon"></i>
+                        <h3>Aqlli IoT Datchiklar</h3>
+                        <p>Tuproq namligi, harorat va namlikni real-time kuzatish. Telefon orqali boshqaruv.</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(89 ta sharh)</span>
+                        </div>
+                        <a href="#contact" class="card-link">Batafsil <i class="fas fa-arrow-right"></i></a>
+                        <button class="compare-btn" data-product="sensor">Solishtirish <i class="fas fa-chart-line"></i></button>
+                    </div>
+                </div>
+                
+                <div class="card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-img">
+                        <img src="1.jpg" alt="Filtrlash tizimlari" loading="lazy">
+                        <div class="card-overlay">
+                            <button class="ar-view-btn" data-product="filter">
+                                <i class="fas fa-vr-cardboard"></i> AR da ko'rish
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <i class="fas fa-filter card-icon"></i>
+                        <h3>Smart Filtrlash</h3>
+                        <p>AI asosidagi avtomatik filtrlash tizimi. Suv sifatini real-time monitoring qiladi.</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            <span>(67 ta sharh)</span>
+                        </div>
+                        <a href="#contact" class="card-link">Batafsil <i class="fas fa-arrow-right"></i></a>
+                        <button class="compare-btn" data-product="filter">Solishtirish <i class="fas fa-chart-line"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="section bg-light" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle"><i class="fas fa-calculator"></i> Kalkulyator</span>
+                <h2 class="section-title">Loyiha <span class="gradient-text">qiymatini hisoblang</span></h2>
+            </div>
+            
+            <div class="calculator-wrapper" data-aos="zoom-in">
+                <div class="calculator-form">
+                    <div class="calc-group">
+                        <label><i class="fas fa-vector-square"></i> Maydon hajmi (gektar):</label>
+                        <input type="number" id="area" placeholder="Masalan: 1" step="0.1">
+                    </div>
+                    <div class="calc-group">
+                        <label><i class="fas fa-tint"></i> Sug'orish turi:</label>
+                        <select id="irrigationType">
+                            <option value="drip">Tomchilatib sug'orish (AI)</option>
+                            <option value="sprinkler">Yomg'irlatib sug'orish</option>
+                            <option value="combined">Kombinatsiyalashgan + IoT</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label><i class="fas fa-microchip"></i> Avtomatlashtirish:</label>
+                        <select id="automation">
+                            <option value="basic">Asosiy (qo'lda boshqaruv)</option>
+                            <option value="semi">Yarim avtomatik + IoT</option>
+                            <option value="smart">Aqlli (AI + IoT + Blockchain)</option>
+                        </select>
+                    </div>
+                    <button id="calculateBtn" class="btn-primary btn-block">Hisoblash <i class="fas fa-chart-line"></i></button>
+                    <div class="calc-result">
+                        <p>Taxminiy narx: <span id="priceResult">0</span> so'm</p>
+                        <small>* Aniq narxni bilish uchun mutaxassislarimiz bilan bog'laning</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prices Section -->
+    <section id="prices" class="section" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle"><i class="fas fa-tags"></i> Narxlar</span>
+                <h2 class="section-title">Shaffof <span class="gradient-text">Narxlar</span></h2>
+            </div>
+            
+            <div class="price-table-wrapper" data-aos="zoom-in">
+                <table class="price-table">
+                    <thead>
+                        <tr><th>Xizmat / Mahsulot</th><th>Tavsif</th><th>Narxi</th>   </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="fw-600"><i class="fas fa-drafting-compass"></i> AI Loyiha chizish</td>
+                        <td>Drone yordamida hududni o'lchash + AI optimizatsiya</td>
+                        <td class="price-cell">500 000 so'mdan</td>
+                    </tr>
+                    <tr><td class="fw-600"><i class="fas fa-seedling"></i> AI Tomchilatib sug'orish</td>
+                        <td>IoT datchiklar + AI boshqaruv (1 gektar)</td>
+                        <td class="price-cell">25 000 000 so'mdan</td>
+                    </tr>
+                    <tr><td class="fw-600"><i class="fas fa-microchip"></i> IoT Sensor to'plami</td>
+                        <td>5 ta sensor + hub + mobil app</td>
+                        <td class="price-cell">5 500 000 so'm</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="price-note" data-aos="fade-up">
+                <i class="fas fa-info-circle"></i>
+                <p>* Blockchain tranzaksiyalar uchun qo'shimcha 2% komissiya olinadi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section bg-light" data-aos="fade-up">
+        <div class="container">
+            <div class="section-header">
+                <span class="subtitle"><i class="fas fa-question-circle"></i> FAQ</span>
+                <h2 class="section-title">Ko'p so'raladigan <span class="gradient-text">savollar</span></h2>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question"><h3>AI tizim qanday ishlaydi?</h3><i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Bizning AI tizimimiz tuproq namligi, ob-havo ma'lumotlari va o'simlik turiga qarab optimal sug'orish vaqtini hisoblaydi.</p></div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question"><h3>IoT datchiklar qanday ulanishadi?</h3><i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>Datchiklar LoRaWAN yoki 4G/5G tarmoqlari orqali markaziy hubga ulanadi.</p></div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question"><h3>Kafolat muddati qancha?</h3><i class="fas fa-chevron-down"></i></div>
+                    <div class="faq-answer"><p>5 yil servis xizmati va barcha uskunalarimizga 2 yil kafolat beramiz.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section" data-aos="fade-up">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <span class="subtitle"><i class="fas fa-envelope"></i> Bog'lanish</span>
+                    <h2>Loyihangizni Biz bilan <span class="gradient-text">Boshlang</span></h2>
+                    <p>Ma'lumotlaringizni qoldiring, muhandislarimiz siz bilan 24 soat ichida bog'lanishadi.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-detail-item">
+                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div><h4>Manzil</h4><p>Farg'ona sh., IT Park, "IDEAL AQUA" texnopark</p></div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                            <div><h4>Telefon</h4><p>+998 (90) 407-53-17</p></div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div><h4>Email</h4><p>info@idealaqua.uz</p></div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form-wrapper" data-aos="fade-left">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> To'liq ismingiz</label>
+                            <input type="text" name="name" placeholder="Ismingizni kiriting" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-phone"></i> Telefon raqamingiz</label>
+                            <input type="tel" name="phone" placeholder="+998 (__) ___-__-__" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-cog"></i> Xizmat turi</label>
+                            <select name="service" required>
+                                <option value="" disabled selected>Tanlang...</option>
+                                <option value="ai">AI + IoT tizim</option>
+                                <option value="consultation">Konsultatsiya</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary btn-block">So'rov yuborish</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1277.6882328576314!2d71.75295554353501!3d40.389532198427666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bb9d854fb35f19%3A0xef7e51171b0cbf01!2sFargona%20Fuqaro%20Loyiha%20servis!5e0!3m2!1sen!2s!4v1774112584681!5m2!1sen!2s" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" data-aos="fade-up">
+        <div class="container">
+            <div class="newsletter-wrapper" data-aos="zoom-in">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>AI yangiliklardan xabardor bo'ling</h3>
+                <p>Eng so'nggi AI va IoT texnologiyalar haqida birinchi bo'lib xabar oling</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Email manzilingiz" required>
+                    <button type="submit">Obuna bo'lish <i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <div class="logo">BIZNING<span>HAMKOR</span></div>
+                    <div class="partner-logo">
+                        <img src="4.png" alt="SUGORISH DUNYOSI" class="footer-partner-img">
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Menyu</h4>
+                    <ul>
+                        <li><a href="#home">Bosh sahifa</a></li>
+                        <li><a href="#about">Biz haqimizda</a></li>
+                        <li><a href="#gallery">Mahsulotlar</a></li>
+                        <li><a href="#contact">Aloqa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-hours">
+                    <h4>Ish vaqti</h4>
+                    <ul>
+                        <li><i class="fas fa-clock"></i> Dushanba - Juma: 09:00 - 18:00</li>
+                        <li><i class="fas fa-clock"></i> Shanba: 10:00 - 15:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 IDEAL AQUA. Barcha huquqlar himoyalangan.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" id="backToTop">
+        <div class="progress-ring">
+            <svg width="50" height="50">
+                <circle cx="25" cy="25" r="22" fill="none" stroke="rgba(0,180,216,0.2)" stroke-width="3"/>
+                <circle cx="25" cy="25" r="22" fill="none" stroke="#00b4d8" stroke-width="3" id="progressCircle" stroke-dasharray="138.2" stroke-dashoffset="138.2"/>
+            </svg>
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </div>
+
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+
+    <!-- AI Chatbot -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <i class="fas fa-robot"></i>
+            <span>AI Assistant</span>
+            <button class="chat-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-content"><p>👋 Assalomu alaykum! Sizga qanday yordam bera olaman?</p></div>
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="chatInput" placeholder="Xabar yozing...">
+            <button id="chatSendBtn"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle"><i class="fas fa-comment-dots"></i><span class="chat-badge">AI</span></button>
+
+    <!-- Cookie Consent -->
+    <div class="cookie-consent" id="cookieConsent">
+        <p><i class="fas fa-cookie-bite"></i> Saytdan foydalanish orqali siz cookie-fayllardan foydalanishga rozilik bildirasiz.</p>
+        <button id="acceptCookies">Qabul qilish</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
